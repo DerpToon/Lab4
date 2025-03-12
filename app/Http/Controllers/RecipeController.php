@@ -76,4 +76,22 @@ class RecipeController extends Controller
         $recipe->delete();
         return redirect()->route('recipes.index');
     }
+
+    public function search(Request $request){
+        if($request->ajax()){
+            $output = '';
+            $recipes = Recipe::where('name','LIKE','%'.$request->search.'%')->get();
+
+            if($recipes){
+                foreach($recipes as $recipe){
+                    $output.= '<tr>
+                               <td>'.$recipe->name.'</td>
+                               <td>'.$recipe->description.'</td>
+                               </tr>';
+                            }
+                return response()->json($output);
+            }
+        }
+        return view('recipes.search');
+    }
 }

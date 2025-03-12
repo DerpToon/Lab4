@@ -10,3 +10,4 @@ use App\Http\Controllers\RecipeController;
 
 Route::resource('recipes', RecipeController::class);
 
+Route::get('/search', [RecipeController::class,'search'])->name('recipes.search');

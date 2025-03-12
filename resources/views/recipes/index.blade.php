@@ -4,7 +4,7 @@
 <div class="container">
     <h2 class="mb-3">Recipe List</h2>
     <a href="{{ route('recipes.create') }}" class="btn btn-primary mb-3">Add New Recipe</a>
-
+    <a href="{{ route('recipes.search') }}" class="btn btn-primary mb-3">Search</a>
     @if(session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
